@@ -1,4 +1,55 @@
 package id.ac.ub.filkom.contoh.entity;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+/** Entity: objek data yang diatur ke tabel "anggota". */
+@Entity
+@Table(name = "anggota")
 public class Anggota {
+
+    @Id
+    @Column(name = "id_anggota", length = 10)
+    private String idAnggota;
+
+    @Column(name = "nama", length = 100, nullable = false)
+    private String nama;
+
+    @Column(name = "email", length = 100)
+    private String email;
+
+    // Wajib ada untuk JPA
+    protected Anggota() { }
+
+    public Anggota(String idAnggota, String nama, String email) {
+        this.idAnggota = idAnggota;
+        this.nama = nama;
+        this.email = email;
+    }
+
+    public String getIdAnggota() {
+        return idAnggota;
+    }
+
+    public void setIdAnggota(String idAnggota) {
+        this.idAnggota = idAnggota;
+    }
+
+    public String getNama() {
+        return nama;
+    }
+
+    public void setNama(String nama) {
+        this.nama = nama;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }

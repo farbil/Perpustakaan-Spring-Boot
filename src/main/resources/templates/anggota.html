@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Daftar Anggota</title>
+</head>
+<body>
+
+<h1>Daftar Anggota</h1>
+
+<!-- Form Pencarian -->
+<form th:action="@{/anggota}" method="get">
+    <label for="kata">Cari nama</label>
+    <input type="text" id="kata" name="kata" th:value="${kata}" />
+    <button type="submit">Cari</button>
+</form>
+<br/>
+
+<!-- Tabel Data Anggota -->
+<table border="1" cellpadding="4" cellspacing="0">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nama</th>
+        <th>Email</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="anggota : ${daftarAnggota}">
+        <td th:text="${anggota.idAnggota}">A001</td>
+        <td th:text="${anggota.nama}">Nama Anggota</td>
+        <td th:text="${anggota.email}">email@contoh.com</td>
+    </tr>
+    </tbody>
+</table>
+
+<!-- Form Tambah Anggota -->
+<h2>Tambah Anggota</h2>
+<form th:action="@{/anggota}" method="post">
+    <input type="text" name="idAnggota" placeholder="ID" required />
+    <input type="text" name="nama" placeholder="Nama" required />
+    <input type="email" name="email" placeholder="Email" required />
+    <button type="submit">Simpan</button>
+</form>
+
+</body>
+</html>
